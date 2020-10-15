@@ -121,6 +121,7 @@ int ls(int argc, char *argv[])
         }
         else
         {
+            printf("%s\n", dirfile);
             // Display only the name of the file
             // Assuming smaller names. Add support for
             // displaying arbitrary longer names
