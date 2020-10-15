@@ -28,27 +28,44 @@ int wc(int argc, char *argv[])
     char c;                     // Character read
     char t;                     // Previous character, to remember space.
     int stop = 0;
-    int count;
+    ssize_t count;
+    int flag = 1; // to check something written
 
     // If no arguments are entered
     if (argc < 2)
     {
         lines = words = chars = 0;
         t = ' '; // Previous space character
+
         while ((c = getchar()) != (-1))
         {
+
+            if (flag) // if something types incrementing word as 1// Runs only one time
+            {
+                words = 1;
+                flag = 0;
+            }
+
             chars++;
 
             if (isspace(c))
             {
+
                 // Skip all white spaces
 
                 // If previously remembered character is not
-                // space increment the word count.
+                // space increment the word count. }
+                if (!isspace(t))
+                    words++;
             }
-            //
+            t = c;
+
+            if (c == '\n')
+            {
+
+                lines++;
+            }
         }
-        words++;
         printf("\t%d\t%d\t%d\n", lines, words, chars);
         return (0);
     }
@@ -69,22 +86,53 @@ int wc(int argc, char *argv[])
 
         lines = words = chars = 0;
         t = ' '; // Previous space character
-        while ((count = read(fd, buffer, sizeof(buffer))) > 0)
+        flag = 1;
+        //while ((count = read(fd, buffer, sizeof(buffer))) > 0)
+        char ch;
+        while ((count = read(fd, &ch, 1)) > 0)
         {
+
+            if (count < 0)
+            {
+                perror("read");
+                return -1;
+            }
+
+            if (flag) // if something in Files incrementing word as 1// Runs only one time
+            {
+                words = 1;
+                flag = 0;
+            }
+
+            chars++;
+
+            if (isspace(ch))
+            {
+                if (!isspace(t))
+                    words++;
+            }
+            t = ch;
+            if (ch == '\n')
+            {
+
+                lines++;
+            }
             //
         }
 
         close(fd);
-        printf("%s\t%d\t%d\t%d\n", argv[i], lines, words, chars);
+        printf("%d\t%d\t%d\t%s\n", lines, words, chars, argv[i]);
 
         // Accumulate the total counts
         tlines += lines;
         twords += words;
         tchars += chars;
     }
-
-    printf("Total\t%d\t%d\t%d\n", tlines, twords, tchars);
-    return (0);
+    if (argc >= 3)
+    {
+        printf("%d\t%d\t%d\ttotal\n", tlines, twords, tchars);
+        return (0);
+    }
 }
 
 //1. Is the program considering multiple consecutive spaces as one separator or each space is
