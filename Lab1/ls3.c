@@ -81,7 +81,7 @@ int ls(int argc, char *argv[])
             // dirp = opendir(argv[i]);
             strcpy(dirfile, argv[i]); // This alters current working directory to directory mentioned in argument
 
-            break; // Why breaking? Because - Accepting only one directory name
+            break; // Why breaking? Because - Accepting only one directory name.
         }
     }
 
@@ -109,8 +109,10 @@ int ls(int argc, char *argv[])
             if ((a == 0) && (file[0] == '.')) //If a switch is 0 , It means skipping for hidden files
                 continue;
 
+            //Stats system call gives attributes of file
             stat(rdir[x]->d_name, &buf);
-            tomode(&buf, tem);
+
+            tomode(&buf, tem); //Call via call by referece
 
             printf("%.10s%4ld ", tem, buf.st_nlink);
 
@@ -122,9 +124,9 @@ int ls(int argc, char *argv[])
             gw = getgrgid(buf.st_gid);
             printf("%10s ", gw->gr_name);
 
-            /* Actual ls command prints no# of chars in each files as well. 
+            /* //Actual ls command prints no# of chars in each files as well. 
                     // Removing this multiple line comment can print # of chars in each file.. 
-                    // But it takes huge time if the directory contains too many files
+                    // But it takes huge time if the directory contains too many files.
                     int fd;
                     char ch;
 
