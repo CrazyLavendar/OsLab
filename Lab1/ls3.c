@@ -1,3 +1,10 @@
+/////////////////////////////////////////////////////////////////////
+// UNIX Commands prototype implementation
+// Command: ls
+// Options supported: -l -a [<dirname>]
+// Authors: Dr Chapram Sudhakar, Dr Rashmi Ranjan Rout
+//////////////////////////////////////////////////////////////////////
+
 #include <stdio.h>
 #include <unistd.h>
 #include <dirent.h>
@@ -39,8 +46,8 @@ int ls(int argc, char *argv[])
     // Default directory - current directory
 
     // Get the current working directory
-    // Get the current working directory
-    getcwd(dirfile, 4096);
+
+    getcwd(dirfile, 4096); // copies Current directory path to dirfile
 
     for (i = 1; i < argc; i++)
     {
@@ -66,19 +73,19 @@ int ls(int argc, char *argv[])
         }
         else // If else doesn't executes , This program does ls for current working directory
         {
+
+            //Not using opendir , closedir functions
             // Assuming that only one last arguent can be
             // given as directory name for listing
             // closedir(dirp);
             // dirp = opendir(argv[i]);
-            strcpy(dirfile, argv[i]);
+            strcpy(dirfile, argv[i]); // This alters current working directory to directory mentioned in argument
 
             break; // Why breaking? Because - Accepting only one directory name
         }
     }
 
-    len = scandir(dirfile, &rdir, NULL, alphasort);
-
-    //printls(len, rdir, a, l, d);
+    len = scandir(dirfile, &rdir, NULL, alphasort); //len provides no. of files/dir in directory
 
     if (len < 0)
     {
@@ -213,7 +220,7 @@ void tomode(struct stat *buf, char *tem)
     return;
 }
 
-// Iam not using this
+// Iam not using this function
 char *chartime(time_t secs, char str[25])
 {
     struct tm dt;

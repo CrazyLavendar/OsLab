@@ -5,6 +5,13 @@
 // Authors: Dr Chapram Sudhakar, Dr Rashmi Ranjan Rout
 //////////////////////////////////////////////////////////////////////
 
+/*
+Refer ls3.c 
+For me handling opendir & closedir gives error. 
+In ls3.c , I have used scandir system call instead of opendir & closedir
+Check ls3.c for for ls command with ls -a -l switches
+*/
+
 #include <stdio.h>
 #include <unistd.h>
 #include <dirent.h>
