@@ -18,7 +18,7 @@ void tomode(struct stat *buf, char *str);
 int ls(int argc, char *argv[]);
 char *chartime(time_t secs, char str[25]);
 
-char buffer[512];
+char buffer[4095];
 
 int main(int argc, char *argv[])
 {

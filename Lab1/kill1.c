@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 {
     if (argc < 2)
     {
-        printf("Usage:\n\t %s <-signo> pid1 <pid2> <pid3> ...\n", argv[0]);
+        printf("Usage:\n\t %s  pid1 <pid2> <pid3> ...\n", argv[0]);
         exit(0);
     }
 

@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
 
 int cat(int argc, char *argv[])
 {
+
     int i, j;               // Loop index variables
     int fd, count;          // Open file descriptor and
     count = sizeof(buffer); // count of bytes to read/write
@@ -72,7 +73,7 @@ int cat(int argc, char *argv[])
                 write(STDOUT_FILENO, buffer, count);
             // If current file is not stdin, then close the file
             close(fd);
-                }
+        }
     }
     return 0;
 }
