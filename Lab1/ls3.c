@@ -74,14 +74,14 @@ int ls(int argc, char *argv[])
         else // If else doesn't executes , This program does ls for current working directory
         {
 
-            //Not using opendir , closedir functions
+            //Not using opendir , closedir functions. Instead Here Scandir systemcall is used
             // Assuming that only one last arguent can be
             // given as directory name for listing
             // closedir(dirp);
             // dirp = opendir(argv[i]);
             strcpy(dirfile, argv[i]); // This alters current working directory to directory mentioned in argument
 
-            break; // Why breaking? Because - Accepting only one directory name.
+            break; // Why breaking? Because - Accepting only one directory name or none in this program.
         }
     }
 
@@ -125,8 +125,8 @@ int ls(int argc, char *argv[])
             printf("%10s ", gw->gr_name);
 
             /* //Actual ls command prints no# of chars in each files as well. 
-                    // Removing this multiple line comment can print # of chars in each file.. 
-                    // But it takes huge time if the directory contains too many files.
+                // Removing this multiple line comment can print # of chars in each file.. 
+                // But it takes huge time if the directory contains too many files.
                     int fd;
                     char ch;
 
