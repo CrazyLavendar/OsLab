@@ -1,0 +1,21 @@
+Assignment list
+
+Advanced Operating Systems Lab
+
+
+1. Write an Command Interpreter Programs which accepts some basic Unix commands and displays the appropriate result. Each student should write programs for at least six commands.
+
+2. Study the concept of Signals and write a program for Context Switching between two processes. ( Layer 1).
+
+3 .Study pthreads and implement the following:-
+
+	a.Write a program which shows the performance improvement in using threads as compared with process.( Examples like Matrix Multiplication, Fibonacci series, etc)
+
+	b.Create your own thread library, which has the features of pthread library by using appropriate system calls. The Library which you created called as layer2, which is on the above layer 1
+
+	c.Implement all CPU Scheduling Algorithms using your thread library ( Layer 3)
+
+4.Study the concept of Synchronization and implement the following problems using (i) Semaphores, Message queues and shared memory (ii) Pthreads 
+Producer consumer problem, readers-writer problem, dinining philosophers problem, Sleeping barber problem.
+
+5.A complete file system implementation inside a disk image file.
